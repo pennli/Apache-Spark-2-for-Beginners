@@ -37,8 +37,8 @@ object SparkSQLStarterApps
 		val acTransList = Array("SB10001,1000", "SB10002,1200", "SB10003,8000", "SB10004,400", "SB10005,300", "SB10006,10000", "SB10007,500", "SB10008,56", "SB10009,30","SB10010,7000", "CR10001,7000", "SB10002,-10")
 		// Create the RDD
 		val acTransRDD = sc.parallelize(acTransList).map(_.split(",")).map(toTrans(_))
-		// Convert RDD to DataFrame
 		
+		// Convert RDD to DataFrame
 		val acTransDF = spark.createDataFrame(acTransRDD)
 		// Register temporary view in the DataFrame for using it in SQL
 		acTransDF.createOrReplaceTempView("trans")
